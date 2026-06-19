@@ -1,8 +1,8 @@
 import os
 
-VOTER_FILE     = "voter.csv"
-CANDIDATE_FILE = "candidate.csv"
-BALLOT_FILE    = "ballots.csv"
+VOTER_FILE     = "../data/voter.csv"
+CANDIDATE_FILE = "../data/candidate.csv"
+BALLOT_FILE    = "../data/ballots.csv"
 
 VOTER_HEADER     = ["voter_id", "district", "age"]
 CANDIDATE_HEADER = ["candidate_id", "first_name", "seat_number"]
