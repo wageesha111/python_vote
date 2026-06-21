@@ -31,6 +31,7 @@ def cast_vote():
     for b in ballots:
         if b[1] == voter_id:
             print("Vote already cast by this voter. Multiple votes are not allowed.")
+            return
 
 
 #seat
@@ -99,4 +100,4 @@ def ballot_menu():
         elif choice == "3":
             break
         else:
-            print("ERROR: Invalid option. Please enter 1-3")
+            print("Invalid option. Please enter 1-3")
