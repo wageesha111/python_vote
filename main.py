@@ -11,7 +11,7 @@ def main_menu():
     print_banner()
 
     while True:
-        print("\nMani Menu")
+        print("\nMain Menu")
         print("1. Voter Management")
         print("2. Candidate Management")
         print("3. Cast / Delete Vote")
