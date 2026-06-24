@@ -43,13 +43,17 @@ def edit_voter():
     voters = fm.load_voters()
 
     voter_id =input("Enter voter ID: ").strip()
-    index = -1
-    for i, v in enumerate(voters):
-        if v[0] ==voter_id:
-            index = i
+    index = 0
+    found = False
+
+    for v in voters:
+        if v[0] == voter_id:
+            found = True
             break
 
-    if index == -1:
+        index = index + 1
+
+    if found == False:
         print("Voter ID not found")
         return
 
