@@ -19,13 +19,6 @@ def is_valid_district(district):
     return False
 
 
-def get_district_proper(district):
-    for d in SRI_LANKA_DISTRICTS:
-        if d.lower() == district.strip().lower():
-            return d
-    return None
-
-
 def is_valid_age(age_str):
     if not age_str.isdigit():
         return False

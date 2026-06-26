@@ -23,7 +23,6 @@ def add_voter():
     if not vld.is_valid_district(district):
         print("District must be one of the 25 districts in Sri Lanka.")
         return
-    district = vld.get_district_proper(district)
 
 #age
 
@@ -64,7 +63,6 @@ def edit_voter():
     if not vld.is_valid_district(district):
         print("District must be one of the 25 districts in Sri Lanka.")
         return
-    district = vld.get_district_proper(district)
     voters[index][1] = district
 
     age = input("Enter new Age: ").strip()
