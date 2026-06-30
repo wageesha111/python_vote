@@ -42,7 +42,6 @@ def edit_voter():
     voters = fm.load_voters()
 
     voter_id =input("Enter voter ID: ").strip()
-    index = 0
     found = False
 
     for v in voters:
@@ -50,26 +49,27 @@ def edit_voter():
             found = True
             break
 
-        index = index + 1
-
     if found == False:
         print("Voter ID not found")
         return
 
-    print("Current record:", voters[index])
+    print("Current Details")
+    print("Voter ID: ", v[0])
+    print("District: ", v[1])
+    print("Age: ", v[2])
 
 
     district = input("Enter new District name: ").strip()
     if not vld.is_valid_district(district):
         print("District must be one of the 25 districts in Sri Lanka.")
         return
-    voters[index][1] = district
+    v[1] = district
 
     age = input("Enter new Age: ").strip()
     if not vld.is_valid_age(age):
         print("Age must be a number and at least 18.")
         return
-    voters[index][2] = age
+    v[2] = age
     fm.save_voters(voters)
     print("Voter updated successfully")
 
