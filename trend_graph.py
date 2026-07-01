@@ -24,12 +24,17 @@ def show_trend_graph():
 
         candidate_df = pd.DataFrame(candidates, columns=["candidate_id", "first_name", "seat_number"])
 
-        vote_counts = ballot_df.groupby("candidate_seat").size().reset_index(name="votes")
+        if not ballot_df.empty:
+            vote_counts = ballot_df.groupby("candidate_seat").size().reset_index(name="votes")
+        else:
+            vote_counts = pd.DataFrame(columns=["candidate_seat", "votes"])
 
-        merged = vote_counts.merge(candidate_df, left_on="candidate_seat",
-                               right_on="seat_number", how="left")
+        merged = candidate_df.merge(vote_counts, left_on="seat_number",
+                                    right_on="candidate_seat", how="left")
 
-        merged["label"] = merged["first_name"] + " (Seat " + merged["candidate_seat"] + ")"
+        merged["votes"] = merged["votes"].fillna(0)
+
+        merged["label"] = merged["first_name"] + " (Seat " + merged["seat_number"] + ")"
 
         fig = px.bar(
             merged,
