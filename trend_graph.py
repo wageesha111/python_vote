@@ -43,11 +43,10 @@ def show_trend_graph():
             text="votes",
             title="Votes Received by Each Candidate",
             labels={"label": "Candidate (Seat)", "votes": "Number of Votes"},
-            color="votes",
-            color_continuous_scale="Blues"
     )
-        fig.update_traces(textposition="outside")
+        fig.update_traces(textposition="outside", marker_color="lightblue")
         fig.update_layout(coloraxis_showscale=False)
+        fig.update_yaxes(dtick=1)
         fig.show()
 
     except ImportError:
