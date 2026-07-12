@@ -20,19 +20,21 @@ def main_menu():
 
         choice = input("Select option: ").strip()
 
-        if choice == "1":
-            vm.voter_menu()
-        elif choice == "2":
-            cm.candidate_menu()
-        elif choice == "3":
-            bm.ballot_menu()
-        elif choice == "4":
-            tg.show_trend_graph()
-        elif choice == "5":
-            print("Exiting VMS. Goodbye!")
-            break
-        else:
-            print("Invalid option. Please enter 1-5")
+        match choice:
+            case "1":
+                vm.voter_menu()
+            case "2":
+                cm.candidate_menu()
+            case "3":
+                bm.ballot_menu()
+            case "4":
+                tg.show_trend_graph()
+            case "5":
+                print("Exiting VMS...")
+                break
+            case _:
+                print("Invalid option.Please enter 1-5")
+
 
 if __name__ == "__main__":
     main_menu()
