@@ -9,7 +9,30 @@ SRI_LANKA_DISTRICTS = [
 ]
 
 def is_valid_voter_id(voter_id):
-    return voter_id.isdigit() and len(voter_id) == 10
+    if not voter_id.isdigit() or len(voter_id) != 10:
+        return False
+
+    year_part = int(voter_id[0:4])
+    padding_part = voter_id[4]
+    sequence_part = int(voter_id[5:9])
+
+    is_valid_year = year_part == 2026
+    is_valid_padding = padding_part == "0"
+    is_valid_sequence = 1001 <= sequence_part <= 9999
+
+    if not (is_valid_year and is_valid_padding and is_valid_sequence):
+        return False
+
+    total = 0
+    for i in range(10):
+        digit = int(voter_id[i])
+        if i % 2 == 0:
+            digit *= 2
+            if digit > 9:
+                digit -= 9
+        total += digit
+
+    return total % 10 == 0
 
 
 def is_valid_district(district):
